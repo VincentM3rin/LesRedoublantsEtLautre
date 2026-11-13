@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 13 nov. 2026 à 15:21
+-- Généré le : ven. 13 nov. 2026 à 15:30
 -- Version du serveur : 10.11.16-MariaDB
 -- Version de PHP : 8.3.36
 
@@ -61,8 +61,8 @@ CREATE TABLE `evenement` (
 --
 
 INSERT INTO `evenement` (`idEvenement`, `nomEvenement`, `dateDebutEvenement`, `dateFinEvenement`, `descriptioEvenement`, `nombrePlaceLimité`, `imgEvenement`, `idUser`) VALUES
-(8, 'Tournoi gratuit SSBU', '2026-11-30 13:59:59', '2026-11-30 16:00:00', 'Tournoi gratuit SSBU le Lundi 30Novembre de 14 à 16h.\r\n\r\n1er place : Figurine NintendosTres\r\n2ième place : Poster NintendosTres\r\n3ième place : 5Bitcoins', 32, './images/tournoi/ssbutournoi.png', 2),
-(9, 'Prop Hunt Fartnight', '2026-11-22 20:00:00', '2026-11-25 23:00:00', 'Prop hunt du 22 au 25 novembre tout les soirs', 12, './images/tournoi/prophunt.png', 1);
+(8, 'Tournoi gratuit SSBU', '2026-11-30 13:59:59', '2026-11-30 16:00:00', 'Tournoi gratuit SSBU le Lundi 30Novembre de 14 à 16h.\r\n\r\n1er place : Figurine NintendosTres\r\n2ième place : Poster NintendosTres\r\n3ième place : 5Bitcoins', 32, './image/evenement/ssbutournoi.png', 2),
+(9, 'Prop Hunt Fartnight', '2026-11-22 20:00:00', '2026-11-25 23:00:00', 'Prop hunt du 22 au 25 novembre tout les soirs', 12, './image/evenement/prophunt.png', 1);
 
 -- --------------------------------------------------------
 
