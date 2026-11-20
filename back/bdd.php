@@ -1,11 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-$liaison = new mysqli("localhost", "root", "", "lesredoublantsetlautre");
-$liste = array();
 
+$host = "localhost";
+$user = "root";
+$paswd = "";
+$bddname ="lesredoublantsetlautre";
 
-if ($liaison->connect_error) {
-    die(json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]));
-}
-
-?>
+$sqli = new mysqli($host,$user,$paswd, $bddname);
