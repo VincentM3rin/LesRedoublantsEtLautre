@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 13 nov. 2026 à 15:30
+-- Généré le : ven. 20 nov. 2026 à 14:29
 -- Version du serveur : 10.11.16-MariaDB
 -- Version de PHP : 8.3.36
 
@@ -53,16 +53,17 @@ CREATE TABLE `evenement` (
   `descriptioEvenement` varchar(2500) DEFAULT NULL,
   `nombrePlaceLimité` int(11) DEFAULT NULL,
   `imgEvenement` varchar(50) DEFAULT NULL,
-  `idUser` int(11) NOT NULL
+  `idUser` int(11) NOT NULL,
+  `id_Hall` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `evenement`
 --
 
-INSERT INTO `evenement` (`idEvenement`, `nomEvenement`, `dateDebutEvenement`, `dateFinEvenement`, `descriptioEvenement`, `nombrePlaceLimité`, `imgEvenement`, `idUser`) VALUES
-(8, 'Tournoi gratuit SSBU', '2026-11-30 13:59:59', '2026-11-30 16:00:00', 'Tournoi gratuit SSBU le Lundi 30Novembre de 14 à 16h.\r\n\r\n1er place : Figurine NintendosTres\r\n2ième place : Poster NintendosTres\r\n3ième place : 5Bitcoins', 32, './image/evenement/ssbutournoi.png', 2),
-(9, 'Prop Hunt Fartnight', '2026-11-22 20:00:00', '2026-11-25 23:00:00', 'Prop hunt du 22 au 25 novembre tout les soirs', 12, './image/evenement/prophunt.png', 1);
+INSERT INTO `evenement` (`idEvenement`, `nomEvenement`, `dateDebutEvenement`, `dateFinEvenement`, `descriptioEvenement`, `nombrePlaceLimité`, `imgEvenement`, `idUser`, `id_Hall`) VALUES
+(8, 'Tournoi gratuit SSBU', '2026-11-30 13:59:59', '2026-11-30 16:00:00', 'Tournoi gratuit SSBU le Lundi 30Novembre de 14 à 16h.\r\n\r\n1er place : Figurine NintendosTres\r\n2ième place : Poster NintendosTres\r\n3ième place : 5Bitcoins', 32, './image/evenement/ssbutournoi.png', 2, 2),
+(9, 'Prop Hunt Fartnight', '2026-11-22 20:00:00', '2026-11-25 23:00:00', 'Prop hunt du 22 au 25 novembre tout les soirs', 12, './image/evenement/prophunt.png', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -96,6 +97,16 @@ CREATE TABLE `participe` (
   `idEvenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `participe`
+--
+
+INSERT INTO `participe` (`idUser`, `idEvenement`) VALUES
+(1, 9),
+(2, 9),
+(5, 8),
+(6, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +116,16 @@ CREATE TABLE `participe` (
 CREATE TABLE `spectateur` (
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `spectateur`
+--
+
+INSERT INTO `spectateur` (`idUser`) VALUES
+(1),
+(2),
+(5),
+(6);
 
 -- --------------------------------------------------------
 
@@ -125,7 +146,9 @@ CREATE TABLE `utilisateurs` (
 
 INSERT INTO `utilisateurs` (`idUser`, `nomUser`, `emailUtil`, `mdpUser`) VALUES
 (1, 'Bostindubanino', 'BostindubaninoBakadu13@unadressemail.com', 'f65bdd0deb6c76add9968b8ec7d9f9c6700d48a44999ab8cc029db7c4c90d5d6'),
-(2, 'Furry', 'CaptaineFurry@gomail.fr', '1f10ab969dbb9df6a1a73fae3c47fb52cdb90e8558874f212732d325ed93101b');
+(2, 'Furry', 'CaptaineFurry@gomail.fr', '1f10ab969dbb9df6a1a73fae3c47fb52cdb90e8558874f212732d325ed93101b'),
+(5, 'Vincetruk', 'vincen@ssbusupremacie.gomme', '682e4b086af15bf8b021f667da79954f78f20e7740c30aec27a44cd77de40f0b'),
+(6, 'guirafe', 'Cruz@primecs.com', '17fcb1958d41b8ff69d0bfbc86d9623db306af48dcd237f93ff5436d4ed057e5');
 
 --
 -- Index pour les tables déchargées
@@ -142,7 +165,8 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `evenement`
   ADD PRIMARY KEY (`idEvenement`),
-  ADD KEY `idUser` (`idUser`);
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `id_Hall` (`id_Hall`);
 
 --
 -- Index pour la table `hall`
@@ -190,13 +214,13 @@ ALTER TABLE `hall`
 -- AUTO_INCREMENT pour la table `spectateur`
 --
 ALTER TABLE `spectateur`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées
@@ -212,7 +236,8 @@ ALTER TABLE `admin`
 -- Contraintes pour la table `evenement`
 --
 ALTER TABLE `evenement`
-  ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `admin` (`idUser`);
+  ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `admin` (`idUser`),
+  ADD CONSTRAINT `evenement_ibfk_2` FOREIGN KEY (`id_Hall`) REFERENCES `hall` (`id_Hall`);
 
 --
 -- Contraintes pour la table `hall`
