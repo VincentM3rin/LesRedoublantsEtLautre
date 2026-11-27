@@ -11,7 +11,7 @@ body::before {
     left: -15px;
     right: -15px;
     bottom: -15px;
-    background-image: url('image/fond.jpg');
+    background-image: url('./img/fond.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,8 +19,132 @@ body::before {
     z-index: -1;
 }
 
+h1 {
+    color: whitesmoke; 
+    -webkit-text-stroke: 1px rgb(30, 30, 30);
+}
+
+.titre {
+    text-align: center;
+}
+
 .title {
     color: #ffffff;
+}
+
+button {
+    background-color: whitesmoke;
+    border-radius: 75px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.head {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(137, 43, 226, 0.50);
+    align-items: center;
+    z-index: 10; 
+}
+
+.head h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2em !important;
+    font-weight: bold !important;
+    color: whitesmoke !important;
+    -webkit-text-stroke: 1px rgb(30, 30, 30);
+    margin: 0.67em 0 !important;
+    line-height: normal !important;
+}
+
+.divbtn {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.divbtn button {
+    font-family: Arial, sans-serif;
+    font-size: 13.33px !important;
+    color: black !important;
+    background-color: whitesmoke !important;
+    border: 2px outset #767676 !important;
+    border-radius: 75px !important;
+    height: 35px !important;
+    padding: 1px 6px !important;
+}
+
+.pdp {
+    height: 75px;
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 75px;
+    filter: brightness(3);
+}
+
+.foot {
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.90);
+}
+
+.map {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 350px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.block {
+    display: block;
+    background-color: rgba(137, 43, 226, 0.50);
+    border: 2px solid black;
+    border-radius: 75px;
+    padding-bottom: 15px;
+}
+
+.block button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+.block .event {
+    height: 200px;
+    width: 350px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 35px;
+    object-fit: cover;
+}
+
+.danger {
+    background-color: rgb(255, 0, 0);
+    font-size: 20px;
+    text-align: center;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+.ligne {
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.section {
+    padding-top: 110px !important;
 }
 
 .agenda-grid {
@@ -83,7 +207,7 @@ body::before {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.event {
+.agenda-grid .event {
     margin: 2px !important;
     padding: 0.5rem !important;
     overflow: hidden;
