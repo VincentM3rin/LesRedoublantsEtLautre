@@ -1,0 +1,91 @@
+body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background-image: url('image/fond.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.title {
+    color: #ffffff;
+}
+
+.agenda-grid {
+    display: grid;
+    grid-template-columns: 60px repeat(10, minmax(120px, 1fr));
+    grid-template-rows: 40px 32px repeat(16, 50px);
+    gap: 0;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-image: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 49px,
+            rgba(255, 255, 255, 0.2) 49px,
+            rgba(255, 255, 255, 0.2) 50px
+        ),
+        repeating-linear-gradient(
+            to right,
+            transparent 0px,
+            transparent calc(10% - 1px),
+            rgba(255, 255, 255, 0.2) calc(10% - 1px),
+            rgba(255, 255, 255, 0.2) 10%
+        );
+    background-position: 0 72px, 60px 72px;
+    background-size: 100% 800px, calc(100% - 60px) 800px;
+    background-repeat: repeat-y, no-repeat;
+}
+
+.day-header {
+    font-weight: bold;
+    text-align: center;
+    background: #e8e8e8;
+    padding: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.hall-header {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+    background: #f5f5f5;
+    padding: 4px;
+    position: sticky;
+    top: 40px;
+    z-index: 2;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.hour-label {
+    text-align: right;
+    padding-right: 10px;
+    color: #d0d0d0;
+    font-size: 0.85rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event {
+    margin: 2px !important;
+    padding: 0.5rem !important;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
