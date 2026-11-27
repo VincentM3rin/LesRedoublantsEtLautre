@@ -1,3 +1,15 @@
+<?php
+require_once '../back/bdd.php';
+
+$resPop = $sqli->query("SELECT * FROM evenement LIMIT 3");
+$populaires = $resPop->fetch_all(MYSQLI_ASSOC);
+
+$resPlaces = $sqli->query("SELECT * FROM evenement ORDER BY `nombrePlaceLimité` ASC LIMIT 3");
+$dernieresPlaces = $resPlaces->fetch_all(MYSQLI_ASSOC);
+
+$resNew = $sqli->query("SELECT * FROM evenement ORDER BY idEvenement DESC LIMIT 3");
+$nouveautes = $resNew->fetch_all(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,93 +18,54 @@
     <link rel="stylesheet" href="index.css">
 </head>
 
-<?php
+<?php require("./header.php"); ?>
 
-require("./header.php");
-
-?>
 <body>
 
-    <h1 class="titre" >Marseille Game mounth</h1>
+    <h1 class="titre">Marseille Game mounth</h1>
     <br>
     <h1>Les évènements les plus populaire</h1>
     
     <div class="flex">
-        <div class="block">
-            <img class="event" src="./img/event0.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event1.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event2.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
+        <?php foreach ($populaires as $event): ?>
+            <div class="block">
+                <img class="event" src="<?= htmlspecialchars($event['imgEvenement']) ?>" alt="<?= htmlspecialchars($event['nomEvenement']) ?>">
+                <h1 class="titre"><?= htmlspecialchars($event['nomEvenement']) ?></h1>
+                <button>Information</button>
+                <button>S'inscrire</button>
+            </div>
+        <?php endforeach; ?>
     </div>
 
     <p class="ligne"></p>
     <h1>Dernières places !</h1>
     
     <div class="flex">
-        <div class="block">
-            <img class="event" src="./img/event0.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-            <p class="danger">XX/200 places</p>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event1.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-            <p class="danger">XX/200 places</p>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event2.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-            <p class="danger">XX/250 places</p>
-        </div>
+        <?php foreach ($dernieresPlaces as $event): ?>
+            <div class="block">
+                <img class="event" src="<?= htmlspecialchars($event['imgEvenement']) ?>" alt="<?= htmlspecialchars($event['nomEvenement']) ?>">
+                <h1 class="titre"><?= htmlspecialchars($event['nomEvenement']) ?></h1>
+                <button>Information</button>
+                <button>S'inscrire</button>
+                <?php if ($event['nombrePlaceLimité'] <= 20): ?>
+                    <p class="danger"><?= htmlspecialchars($event['nombrePlaceLimité']) ?> places</p>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
     </div>
 
     <p class="ligne"></p>
     <h1>Les nouveautés</h1>
     
     <div class="flex">
-        <div class="block">
-            <img class="event" src="./img/event0.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event1.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
-
-        <div class="block">
-            <img class="event" src="./img/event2.jpg">
-            <h1 class="titre">Nom évènement</h1>
-            <button>Information</button>
-            <button>S'inscrire</button>
-        </div>
+        <?php foreach ($nouveautes as $event): ?>
+            <div class="block">
+                <img class="event" src="<?= htmlspecialchars($event['imgEvenement']) ?>" alt="<?= htmlspecialchars($event['nomEvenement']) ?>">
+                <h1 class="titre"><?= htmlspecialchars($event['nomEvenement']) ?></h1>
+                <button>Information</button>
+                <button>S'inscrire</button>
+            </div>
+        <?php endforeach; ?>
     </div>
 
     <footer>
