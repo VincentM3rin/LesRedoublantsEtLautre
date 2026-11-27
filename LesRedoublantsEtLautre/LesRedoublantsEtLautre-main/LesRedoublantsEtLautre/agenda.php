@@ -6,12 +6,11 @@
     <title>Agenda</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="agenda.css">
-    <link rel="stylesheet" href="index.css">
 </head>
 
 <?php
 
-require("./back/bdd.php");
+require_once '../back/bdd.php';
 
 ?>
 
