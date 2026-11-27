@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../back/bdd.php';
+require('./back/bdd.php');
 
 $message = "";
 
@@ -84,7 +84,7 @@ if (isset($_POST['btn_inscription'])) {
     <?php endif; ?>
 
     <div class="flex">
-        <div class="block">
+        <div class="block" id="connect">
             <h2>Connexion</h2>
             <form method="POST" action="">
                 <h1>Nom ou Mail : <input type="text" name="identifiant" required></h1>
@@ -93,9 +93,9 @@ if (isset($_POST['btn_inscription'])) {
             </form>
         </div>
 
-        <div class="block">
+        <div class="block" id="create">
             <h2>Inscription</h2>
-            <form method="POST" action="">
+            <form method="POST" action="" id="inscription">
                 <h1>Nom : <input type="text" name="nom_inscr" required></h1>
                 <h1>Mail : <input type="email" name="email_inscr" required></h1>
                 <h1>Mot de passe : <input type="password" name="mdp_inscr" required></h1>
@@ -103,5 +103,8 @@ if (isset($_POST['btn_inscription'])) {
             </form>
         </div>
     </div>
+
+    <script src="./connectcreate.js"></script>
+
 </body>
 </html>
